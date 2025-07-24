@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Evaluación de Estudiantes</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app" class="contenedor">
+    <h1>Evaluación de Estudiantes</h1>
+
+    <!-- Formulario para añadir alumno -->
+    <form @submit.prevent="agregarAlumnoFormulario" class="formulario">
+      <h2>Nuevo Alumno</h2>
+      <input v-model="nuevoAlumno.nombre" type="text" placeholder="Nombre del alumno" required />
+      <input v-model.number="nuevoAlumno.nota1" type="number" placeholder="Nota 1" min="0" max="20" required />
+      <input v-model.number="nuevoAlumno.nota2" type="number" placeholder="Nota 2" min="0" max="20" required />
+      <input v-model.number="nuevoAlumno.nota3" type="number" placeholder="Nota 3" min="0" max="20" required />
+      <button type="submit">Agregar Alumno</button>
+    </form>
+
+    <!-- Tabla de notas -->
+    <table>
+      <thead>
+        <tr>
+          <th>Estudiante</th>
+          <th>Nota 1</th>
+          <th>Nota 2</th>
+          <th>Nota 3</th>
+          <th>Promedio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(alumno, index) in alumnos" :key="index">
+          <td><input v-model="alumno.nombre" /></td>
+          <td><input type="number" v-model.number="alumno.nota1" min="0" max="20" /></td>
+          <td><input type="number" v-model.number="alumno.nota2" min="0" max="20" /></td>
+          <td><input type="number" v-model.number="alumno.nota3" min="0" max="20" /></td>
+          <td>{{ calcularPromedio(alumno) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer obligatorio -->
+  <footer>
+    <p>Desarrollado por: <strong>Valentín Flores Zulema</strong></p>
+    <p>Fecha de desarrollo: <strong>24 de julio de 2025</strong></p>
+  </footer>
+
+  <!-- Vue.js -->
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        alumnos: [],
+        nuevoAlumno: {
+          nombre: '',
+          nota1: null,
+          nota2: null,
+          nota3: null
+        }
+      },
+      methods: {
+        calcularPromedio(alumno) {
+          const suma = alumno.nota1 + alumno.nota2 + alumno.nota3;
+          return (suma / 3).toFixed(2);
+        },
+        agregarAlumnoFormulario() {
+          // Copia segura del objeto
+          const alumno = {
+            nombre: this.nuevoAlumno.nombre,
+            nota1: this.nuevoAlumno.nota1,
+            nota2: this.nuevoAlumno.nota2,
+            nota3: this.nuevoAlumno.nota3
+          };
+          this.alumnos.push(alumno);
+
+          // Reiniciar formulario
+          this.nuevoAlumno.nombre = '';
+          this.nuevoAlumno.nota1 = null;
+          this.nuevoAlumno.nota2 = null;
+          this.nuevoAlumno.nota3 = null;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
