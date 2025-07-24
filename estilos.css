@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f6fa;
+  color: #2f3640;
+}
+
+/* Contenedor general */
+.contenedor {
+  max-width: 900px;
+  margin: 40px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  color: #273c75;
+  margin-bottom: 30px;
+}
+
+/* Estilos de la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+th, td {
+  border: 1px solid #dcdde1;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #dcdde1;
+  color: #2f3640;
+}
+
+/* Inputs de la tabla */
+input[type="number"],
+input[type="text"] {
+  width: 90%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Botón principal */
+button {
+  padding: 10px 20px;
+  background-color: #44bd32;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #4cd137;
+}
+
+/* Estilos del formulario de ingreso */
+.formulario {
+  background-color: #f1f2f6;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.formulario h2 {
+  width: 100%;
+  margin: 0 0 10px 0;
+  color: #2f3640;
+  font-size: 20px;
+}
+
+.formulario input {
+  flex: 1 1 22%;
+  min-width: 120px;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.formulario button {
+  flex: 1 1 100%;
+  background-color: #273c75;
+  margin-top: 10px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background-color: #273c75;
+  color: white;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+/* Diseño responsivo para celulares */
+@media screen and (max-width: 600px) {
+  .formulario input {
+    flex: 1 1 100%;
+  }
+
+  table th, table td {
+    font-size: 13px;
+    padding: 6px;
+  }
+
+  .contenedor {
+    margin: 20px;
+    padding: 15px;
+  }
+}
